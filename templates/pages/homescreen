@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<Div class="image">
+    <img src="#" alt="Logo">
+</Div>
+<div class="selection-option">
+    <h3 class="selection-text">Returning Users/Login</h3>
+    <span class="icon"></span>
+</div>
+{% endblock content %}
