@@ -9,3 +9,6 @@ class HelpPageView(TemplateView):
 
 class NutritionPageView(TemplateView):
     template_name = "pages/nutritional.html"
+
+class RegistrationPageView(TemplateView):
+    template_name = "registration/register.html"
