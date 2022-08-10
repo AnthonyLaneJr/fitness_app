@@ -1,6 +1,183 @@
-body{
+/* color
+orange-text #FFB703
+dark blue (back of buttons) #023047
+gray (unused really) #707070
+light black backing - #8ECAE6
+medium lblue (overall backgroun) #219EBC   */
+*{
     max-width: 428px;
     max-height: 926px;
 }
+div.base{
+    background-color: #219EBC;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+div.navigation_bar{
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    width: 100%;
+    padding: 5%;
+    background-color: #219EBC;
+}
+/* Start Page */
+div.image{
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    background-color: #8ECAE6;
+    top:03%;
+}
+div.start{
+    margin-left: 2%;
+    margin-top: 0%;
+}
+img{
+    height: 50%;
+}
+h1.start{
+    padding-top: 120%;
+    padding-bottom: 2%;
+    color: #FFB703;
+    font-size: xx-large;
+}
+button.start{
+    font-size: large;
+    color: #FFB703;
+    text-decoration: none;
+    background-color: #023047;
+}
+div.selctions{
+    background-color: #023047;
+
+}
+input.start{
+    background-color: #023047;
+    width: 80%;
+    padding: 4%;
+    margin-top: 0%;
+    margin-bottom: 6%;
+    border-radius: 10%;
+}
 
 /* Register page */
+
+div.register, div.page{
+    background-color: #219EBC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.logo_return{
+    padding-top: 10%;
+    height: 20%;
+    width: auto;
+}
+div.register input{
+    width:150%;
+    padding: 6%;
+    margin: 1%;
+}
+::placeholder{
+    color: #FFB703;
+}
+button.submit{
+    width: 70%;
+    text-decoration: #FFB703;
+    border-radius: 30%;
+}
+h1.register{
+    color: #FFB703;
+    padding-left: 5%;
+}
+h3.register{
+    align-content: center;
+    padding: 5%;
+    color: #FFB703;
+}
+small.register{
+    max-width: 50%;
+    font-size: x-small;
+    color: #FFB703;
+}
+small.start{
+    max-width: 80%;
+    font-size: .75em;
+}
+img.register{
+    width: 30%;
+    height: 10%;
+    color: #FFB703;
+}
+i{
+    color: #FFB703;
+}
+
+/* Nutritional Recommendation Page */
+
+div.grid-container{
+    text-align: start;
+    width: 65%;
+    margin-top: 5%;
+    display: grid;
+    column-gap: 4%;
+    row-gap: 2%;
+    grid-template-columns: auto auto;
+}
+div.grid-item{
+background-color: white;
+color: #FFB703;
+min-width: 20%;
+}
+h3.nutrition{
+    align-content: center;
+    padding-top: 1%;
+    padding-bottom: 0%;
+    color: #FFB703;
+    max-width: 85%;
+}
+h3.akward-nut{
+    margin-left: 15%;
+}
+
+/* password reset page */
+div.reset_img{
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    background-color: #8ECAE6;
+    top: 10%;
+}
+div.reset{
+    width: 100%;
+    text-align: center;
+}
+div.reset_return{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-content: space-between;
+    width: 100%;
+    padding: 5%;
+    background-color: #219EBC;
+}
+small.reset{
+    width: 100%;
+    font-size: large;
+    color: #FFB703;
+    margin-bottom: 10%;
+}
+h1.reset{
+    padding-top: 120%;
+    padding-bottom: 2%;
+    color: #FFB703;
+    font-size: 2em;
+}
+h1.reset_return{
+    color: #FFB703;
+    padding-left: 15%;
+}

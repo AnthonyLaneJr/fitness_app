@@ -4,27 +4,21 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="start">
+<div class="page">
     <Div class="image">
         <img src="#" alt="Logo">
     </Div>
-    <div class="selections">
-        <div class="selection-option">
-            <h3 class="selection-text">Returning Users/Login</h3>
-            <i class="fa-solid fa-right-to-bracket">
+        <h1 class="start">Welcome Back!</h1>
+
+        <input type="text" class="start" placeholder="Username:">
+
+        <input type="text" placeholder="Password:" class="start">
+
+        <button class="submit start" aria-placeholder="Create Account"> Login     <i class="fa-solid fa-right-to-bracket"></i></button>
+        <button class="submit start" aria-placeholder="Create Account"> New User     <i class="fa-solid fa-user-plus"></i></button>
+
+        <div class="navigation_bar start">
+            <Small class="register start"><button class="submit start" aria-placeholder="Create Account">Reset Password</button></Small>
         </div>
-        <div class="selection-option">
-            <h3 class="selection-text">New Users/Register</h3>
-            <i class="fa-solid fa-user-plus"></i>
-        </div>
-    </div>
 </div>
 {% endblock content %}
-
-<h1 class="login">Log In</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create">
-</form>
-<Small class="login white-text">Forgot your Password? <a class="white-text" href="{% url 'password_reset' %}">Click here</a> to reset it.</Small>
