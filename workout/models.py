@@ -17,21 +17,28 @@ class Workout(models.Model):
     description_4 = models.TextField()
     exercise_5 = models.TextField()
     description_5 = models.TextField()
-    goal_focus = goal()
+    completed_status = False
+    goal_focus = ''
 
 
     def goal(self, input):
         if input.lower() == 'weight loss':
-            return input
+            self.goal_focus = input
         if input.lower() == 'weight gain':
-            return input
+            self.goal_focus = input
         else:
-            return 'maintain weight'
+            self.goal_focus = 'maintain weight'
+
+    def update_workout(self):
+        if self.completed_status == False:
+            self.completed_status = True
+        else:
+            self.completed_status = False
 
 class Workout_template(Workout):
     def __init__(self):
         super().__init__()
-    goal = goal_choice()
+    goal = ''
     name = goal
     week_1 = []
     week_2 = []
