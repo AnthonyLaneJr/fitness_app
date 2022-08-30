@@ -36,7 +36,7 @@ class UpdateAccountPageView(TemplateView):
     template_name = "users/view_account.html"
 
 class DailyPageView(TemplateView):
-    template_name = "workouts/daily_view.html"
+    template_name = "workout/daily_view.html"
 
 class WeeklyPageView(TemplateView):
-    template_name = "workouts/weekly_view.html"
+    template_name = "workout/weekly_view.html"

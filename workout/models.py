@@ -35,15 +35,26 @@ class Workout(models.Model):
         else:
             self.completed_status = False
 
-class Workout_template(Workout):
+class Week(models.Model):
+    def __init__(self, week_number):
+        super().__init__()
+        self.name = 'Week' + week_number
+        self.workouts = []
+
+    def append_workout(self, workout,):
+        if workout in self.workouts:
+            print('Workout already in week')
+        else:
+            self.workouts.append(workout)
+
+        
+
+class Workout_template(models.Model):
     def __init__(self):
         super().__init__()
     goal = ''
     name = goal
-    week_1 = []
-    week_2 = []
-    week_3 = []
-    week_4 = []
+    weeks = []
 
 
     def goal_choice(self, answer):
@@ -55,15 +66,11 @@ class Workout_template(Workout):
             return 'maintain weight'
 
 
-    def append_workout(self, workout, week):
-        if week == 1:
-            self.week_1.append(workout)
-        elif week == 2:
-            self.week_2.append(workout)
-        elif week == 3:
-            self.week_3.append(workout)
-        elif week == 4:
-            self.week_4.append(workout)
+    def append_weekly_template(self, week):
+        if week in self.weeks:
+            print('Week already in template')
         else:
-            return 'Please enter a valid week.'
+            self.weeks.append(week)
+
+
     
