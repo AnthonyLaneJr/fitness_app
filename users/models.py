@@ -23,7 +23,7 @@ class AgeGroup(models.Model):
     def __str__(self):
         return self.name
 
-class CustomUser(AbstractUser):
+class FitnessUser(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age_category = models.ForeignKey(
@@ -49,8 +49,7 @@ class CustomUser(AbstractUser):
     description =models.TextField()
 
 
-class UserList(CustomUser):
-    super().__init__()
+class UserList(models.Model):
     name = 'User List'
     users = []
 

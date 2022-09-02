@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ["localhost",
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
+    'workout',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,11 +82,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': 'test',
+        'USER': 'postgres',
+        'PASSWORD': '529736',
     }
 }
 
@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.FitnessUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
