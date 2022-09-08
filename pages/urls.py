@@ -12,6 +12,8 @@ urlpatterns = [
     path('account', AccountPageView.as_view(), name='account'),
     path('account/update', UpdateAccountPageView.as_view(), name='update_account'),
     path('account/settings', SettingsPageView.as_view(), name='settings'),
+
+    
     path('template/daily', DailyPageView.as_view(), name='daily'),
     path('template/weekly', WeeklyPageView.as_view(), name='weekly'),
 ]

@@ -10,7 +10,7 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Workout, Workout_template
+from .models import SingleWorkout, Workout_template
 # Create your views here.
 
 class WeeklyListView(LoginRequiredMixin, ListView):
@@ -24,7 +24,7 @@ class WeeklyListView(LoginRequiredMixin, ListView):
         return context
 
 class WorkoutDetailView(LoginRequiredMixin, DetailView):
-    model = Workout_template
+    model = SingleWorkout
     template_name = 'workout/daily_view.html'
 
     def get_daily_exercise(self, context, name, week, index):

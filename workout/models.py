@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from users.models import Goal
 # Create your models here.
 
-class Workout(models.Model):
-    def __init__(self):
-        super().__init__()
+class SingleWorkout(models.Model):
     name = models.CharField(max_length=128)
     exercise_1 = models.TextField()
     description_1 = models.TextField()
@@ -18,16 +17,9 @@ class Workout(models.Model):
     exercise_5 = models.TextField()
     description_5 = models.TextField()
     completed_status = False
-    goal_focus = ''
 
-
-    def goal(self, input):
-        if input.lower() == 'weight loss':
-            self.goal_focus = input
-        if input.lower() == 'weight gain':
-            self.goal_focus = input
-        else:
-            self.goal_focus = 'maintain weight'
+    def __str__(self):
+        return self.name
 
     def update_workout(self):
         if self.completed_status == False:
@@ -36,12 +28,13 @@ class Workout(models.Model):
             self.completed_status = False
 
 class Week(models.Model):
-    def __init__(self, week_number):
-        super().__init__()
-        self.name = 'Week' + week_number
-        self.workouts = []
+    name = models.CharField(max_length=128, default='test template')
+    workouts = []
+    
+    def __str__(self):
+        return self.name
 
-    def append_workout(self, workout,):
+    def append_workout(self, workout):
         if workout in self.workouts:
             print('Workout already in week')
         else:
@@ -50,12 +43,17 @@ class Week(models.Model):
         
 
 class Workout_template(models.Model):
-    def __init__(self):
-        super().__init__()
-    goal = ''
-    name = goal
+    name = models.CharField(max_length=128, default='test template')
+    goal = models.ForeignKey(
+        Goal,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     weeks = []
 
+    def __str__(self): 
+        return self.name
 
     def goal_choice(self, answer):
         if answer == 'weight loss':
