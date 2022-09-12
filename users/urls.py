@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import AccountDetailView, SettingsPageView, UpdateAccountPageView
-
+from .views import (
+    AccountDetailView, SettingsPageView, UpdateAccountPageView, StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, PasswordChangePageView, PasswordResetPageView
+)
+"""
+I added the following to the import inorder for it work... StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, PasswordChangePageView, PasswordResetPageView
+"""
 urlpatterns = [
     path('', StartPageView.as_view(), name='start'),
     path('home', HomePageView.as_view(), name='home'),

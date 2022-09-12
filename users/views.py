@@ -11,7 +11,7 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Frequency, Gender, AgeGroup, CustomUser, FitnessUser, Goal
+from .models import Frequency, Gender, AgeGroup, FitnessUser, Goal
 
 
 class StartPageView(TemplateView):
@@ -37,21 +37,23 @@ class PasswordChangePageView(LoginRequiredMixin ,UpdateView):
     template_name = "registration/password_change_form.html"
 
 
-'''##############   Below is already completed   #############'''
+'''##############   Below is already completed   
+
+I changed CustomUser to FitnessUser inorder for it to work...#############'''
 
 
 
 class AccountDetailView(LoginRequiredMixin, DetailView):
-    model = CustomUser
+    model = FitnessUser
     template_name = "users/view_account.html"
 
 
 class SettingsPageView(LoginRequiredMixin, TemplateView):
-    model = CustomUser
+    model = FitnessUser
     template_name = "users/settings.html"
 
 class UpdateAccountPageView(LoginRequiredMixin, UpdateView):
-    model = CustomUser
+    model = FitnessUser
     template_name = "users/view_account.html"
     fields = [
         'age_category', 'height', 'gender', 'first_name',
