@@ -1,5 +1,6 @@
 from multiprocessing import context
 from typing import List
+from urllib import request
 from django.views.generic import (
     ListView,
     DetailView,
@@ -12,6 +13,7 @@ from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Frequency, Gender, AgeGroup, FitnessUser, Goal
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 class StartPageView(TemplateView):
@@ -26,8 +28,7 @@ class HelpPageView(LoginRequiredMixin ,DetailView):
 class NutritionalPageView(LoginRequiredMixin ,DetailView):
     template_name = "users/nutritional.html"
 
-class RegistrationPageView(CreateView):
-    template_name = "registration/register.html"
+
 
 class PasswordResetPageView(UpdateView):
     template_name = "registration/password_reset_form.html"
@@ -41,11 +42,20 @@ class PasswordChangePageView(LoginRequiredMixin ,UpdateView):
 
 I changed CustomUser to FitnessUser inorder for it to work...#############'''
 
+class RegistrationPageView(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("home")
+    template_name = "registration/register.html"
 
-
-class AccountDetailView(LoginRequiredMixin, DetailView):
+class AccountTemplateView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/view_account.html"
+
+    '''def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if context["FitnessUser"] == self.request.user:
+            return context'''
+# if user is authenticated.
 
 
 class SettingsPageView(LoginRequiredMixin, TemplateView):
@@ -54,9 +64,12 @@ class SettingsPageView(LoginRequiredMixin, TemplateView):
 
 class UpdateAccountPageView(LoginRequiredMixin, UpdateView):
     model = FitnessUser
-    template_name = "users/view_account.html"
+    form_class = CustomUserChangeForm
+    template_name = "users/update_account.html"
     fields = [
         'age_category', 'height', 'gender', 'first_name',
         'last_name', 'exercise_frequency', 'goal',
     ]
+    success_url = reverse_lazy("home")
+
 

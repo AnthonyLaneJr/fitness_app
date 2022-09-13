@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    AccountDetailView, SettingsPageView, UpdateAccountPageView, StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, PasswordChangePageView, PasswordResetPageView
+    AccountTemplateView, SettingsPageView, UpdateAccountPageView, StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, PasswordChangePageView, PasswordResetPageView
 )
 """
 I added the following to the import inorder for it work... StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, PasswordChangePageView, PasswordResetPageView
@@ -13,7 +13,7 @@ urlpatterns = [
     path('register', RegistrationPageView.as_view(), name='register'),
     path('register/change', PasswordChangePageView.as_view(), name='change_password'),
     path('register/reset', PasswordResetPageView.as_view(), name='reset_password'),
-    path('account', AccountDetailView.as_view(), name='account'),
+    path('account', AccountTemplateView.as_view(), name='account'),
     path('account/update', UpdateAccountPageView.as_view(), name='update_account'),
     path('account/settings', SettingsPageView.as_view(), name='settings'),
 ]
