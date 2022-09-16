@@ -3,9 +3,12 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-Home Page
 View Account
 {% if request.user.is_authenticated %}
-    <p>User = {{ request.user.first_name }}</p>
+    <p>User = {{ request.user }}</p>
+    <p>Goal = {{ request.user.goal }}</p>
+    <p>Height = {{ request.user.height }}</p>
+    <p>Weight = {{ request.user.weight }}</p>
+    <p>Age = {{ request.user.age_category }}</p>
 {% endif %}
 {% endblock content %}

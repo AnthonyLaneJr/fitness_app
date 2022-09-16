@@ -11,15 +11,15 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Frequency, Gender, AgeGroup, FitnessUser, Goal
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .models import FitnessUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 class StartPageView(TemplateView):
     template_name = "users/start.html"
 
-class HomePageView(TemplateView):
+class HomePageView(LoginRequiredMixin ,TemplateView):
     template_name = "users/home.html"
 
 class HelpPageView(LoginRequiredMixin ,DetailView):
@@ -51,10 +51,11 @@ class AccountTemplateView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/view_account.html"
 
-    '''def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if context["FitnessUser"] == self.request.user:
-            return context'''
+    '''def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        return super().get_context_data(**kwargs)
+
+    def test_func(self):
+        return self.request.user == FitnessUser.username'''
 # if user is authenticated.
 
 
@@ -62,14 +63,10 @@ class SettingsPageView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/settings.html"
 
-class UpdateAccountPageView(LoginRequiredMixin, UpdateView):
+class UpdateAccountPageView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     form_class = CustomUserChangeForm
     template_name = "users/update_account.html"
-    fields = [
-        'age_category', 'height', 'gender', 'first_name',
-        'last_name', 'exercise_frequency', 'goal',
-    ]
     success_url = reverse_lazy("home")
 
 

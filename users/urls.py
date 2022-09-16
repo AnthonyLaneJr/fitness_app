@@ -7,13 +7,13 @@ I added the following to the import inorder for it work... StartPageView, HomePa
 """
 urlpatterns = [
     path('', StartPageView.as_view(), name='start'),
-    path('home', HomePageView.as_view(), name='home'),
+    path('home/', HomePageView.as_view(), name='home'),
     path('about/', HelpPageView.as_view(), name='about'),
-    path("about/nutrition", NutritionalPageView.as_view(), name='nutrition'),
-    path('register', RegistrationPageView.as_view(), name='register'),
-    path('register/change', PasswordChangePageView.as_view(), name='change_password'),
+    path("about/nutrition/", NutritionalPageView.as_view(), name='nutrition'),
+    path('register/', RegistrationPageView.as_view(), name='register'),
+    path('register/change/', PasswordChangePageView.as_view(), name='change_password'),
     path('register/reset', PasswordResetPageView.as_view(), name='reset_password'),
-    path('account', AccountTemplateView.as_view(), name='account'),
-    path('account/update', UpdateAccountPageView.as_view(), name='update_account'),
-    path('account/settings', SettingsPageView.as_view(), name='settings'),
+    path('account/', AccountTemplateView.as_view(), name='account'),
+    path('account/update/', UpdateAccountPageView.as_view(), name='update_account'),
+    path('account/settings/', SettingsPageView.as_view(), name='settings'),
 ]

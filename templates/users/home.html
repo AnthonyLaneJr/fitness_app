@@ -4,4 +4,6 @@
 
 {% block content %}
 Home Page
+<p>User = {{ request.user }}</p>
+<a href="{% url 'logout' %}">logout</a>
 {% endblock content %}

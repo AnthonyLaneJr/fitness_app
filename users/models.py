@@ -28,7 +28,6 @@ class Goal(models.Model):
         return self.name
 
 class FitnessUser(AbstractUser):
-    password = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     age_category = models.ForeignKey(
@@ -58,7 +57,6 @@ class FitnessUser(AbstractUser):
         null=True
     )
     template = []
-    USERNAME_FIELD: str
 
 
 class UserList(models.Model):
