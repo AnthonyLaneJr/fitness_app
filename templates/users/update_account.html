@@ -4,9 +4,12 @@
 
 {% block content %}
 Home Page
+{% if request.user == user %}
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+{% endif %}
+{{ user.username }}
 {% endblock content %}

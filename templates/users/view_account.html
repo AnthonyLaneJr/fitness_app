@@ -10,5 +10,7 @@ View Account
     <p>Height = {{ request.user.height }}</p>
     <p>Weight = {{ request.user.weight }}</p>
     <p>Age = {{ request.user.age_category }}</p>
+    <p>Pk = {{ request.user.pk }}</p>
+    <a href="update/{{request.user.pk}}/">Update account</a>
 {% endif %}
 {% endblock content %}

@@ -5,5 +5,8 @@
 {% block content %}
 Home Page
 <p>User = {{ request.user }}</p>
+<a href="{% url 'account' %}">account</a>
+<br>
+<br>
 <a href="{% url 'logout' %}">logout</a>
 {% endblock content %}

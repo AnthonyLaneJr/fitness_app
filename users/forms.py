@@ -10,4 +10,4 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = FitnessUser
-        fields = UserChangeForm.Meta.fields
+        fields = ('goal', 'gender', 'age_category', 'exercise_frequency', 'weight', 'height')

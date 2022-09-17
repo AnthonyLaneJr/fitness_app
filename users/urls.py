@@ -14,6 +14,6 @@ urlpatterns = [
     path('register/change/', PasswordChangePageView.as_view(), name='change_password'),
     path('register/reset', PasswordResetPageView.as_view(), name='reset_password'),
     path('account/', AccountTemplateView.as_view(), name='account'),
-    path('account/update/', UpdateAccountPageView.as_view(), name='update_account'),
+    path('account/update/<int:pk>/', UpdateAccountPageView.as_view(), name='update_account'),
     path('account/settings/', SettingsPageView.as_view(), name='settings'),
 ]

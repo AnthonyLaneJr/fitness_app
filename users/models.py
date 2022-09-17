@@ -1,4 +1,4 @@
-from pydoc import describe
+from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -58,10 +58,16 @@ class FitnessUser(AbstractUser):
     )
     template = []
 
+    def get_absolute_url(self):
+        return reverse('detail', args=[self.id])
 
 class UserList(models.Model):
-    name = 'User List'
+    name = 'user list'
+    purpose = models.CharField(max_length=128)
     users = []
+
+    def __str__(self):
+        return self.purpose
 
     def add_user(self, user):
         self.users.append(user)

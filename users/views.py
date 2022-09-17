@@ -1,12 +1,9 @@
 from multiprocessing import context
-from typing import List
 from urllib import request
 from django.views.generic import (
-    ListView,
     DetailView,
     UpdateView,
     CreateView,
-    DeleteView,
     TemplateView
 )
 from django.urls import reverse_lazy
@@ -51,22 +48,30 @@ class AccountTemplateView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/view_account.html"
 
-    '''def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        return super().get_context_data(**kwargs)
-
-    def test_func(self):
-        return self.request.user == FitnessUser.username'''
-# if user is authenticated.
-
 
 class SettingsPageView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/settings.html"
 
-class UpdateAccountPageView(LoginRequiredMixin, TemplateView):
+class UpdateAccountPageView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
     model = FitnessUser
     form_class = CustomUserChangeForm
     template_name = "users/update_account.html"
     success_url = reverse_lazy("home")
 
+    def test_func(self):
+        return self.request.user.pk == '7'
 
+    def get_context_data(self, **kwargs):
+        user = FitnessUser.objects.get(username=self.request.user)
+        return super().get_context_data(**kwargs)
+
+
+    def form_valid(self, form):
+        if form.instance.pk != self.request.user.pk:
+            raise PermissionDenied(
+                "You are not authorized to update this accounts info."
+            )
+        return super().form_valid(form)
+
+    
