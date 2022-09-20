@@ -53,14 +53,16 @@ class SettingsPageView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/settings.html"
 
-class UpdateAccountPageView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
+class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = FitnessUser
     form_class = CustomUserChangeForm
     template_name = "users/update_account.html"
     success_url = reverse_lazy("home")
 
+
     def test_func(self):
-        return self.request.user.pk == '7'
+        return self.request.user == FitnessUser.objects.filter(id = self.kwargs['pk'])
+
 
     def get_context_data(self, **kwargs):
         user = FitnessUser.objects.get(username=self.request.user)
@@ -73,5 +75,3 @@ class UpdateAccountPageView(LoginRequiredMixin, UpdateView, UserPassesTestMixin)
                 "You are not authorized to update this accounts info."
             )
         return super().form_valid(form)
-
-    

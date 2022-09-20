@@ -1,26 +1,29 @@
 from multiprocessing import context
+from re import template
+from ssl import Purpose
 from typing import List
 from django.views.generic import (
     ListView,
     DetailView,
     UpdateView,
-    CreateView,
     DeleteView
 )
 from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import SingleWorkout, Workout_template
+
+from users.models import FitnessUser
+from .models import SingleWorkout, Workout_template, Week
 # Create your views here.
 
 class WeeklyListView(LoginRequiredMixin, ListView):
     model = Workout_template
     template_name = "workout/weekly_view.html"
 
-    def get_weekly_exercise_list(self, context, name, week):
-        context['workout_list'] = Workout_template.objects.filter(
-            name=name
-        ).filter(week=Workout_template.weeks[week])
+    def get_context_data(self, **kwargs):
+        context = super(WeeklyListView, self).get_context_data(**kwargs)
+        context['template'] = Workout_template.objects.filter(purpose=1, frequency=0)
+        context['template_weeks'] = []
         return context
 
 class WorkoutDetailView(LoginRequiredMixin, DetailView):
