@@ -22,7 +22,7 @@ class WeeklyListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(WeeklyListView, self).get_context_data(**kwargs)
-        context['template'] = Workout_template.objects.filter(purpose=1, frequency=0)
+        context['template'] = Workout_template.objects.get(name = self.request.user.template)
         context['template_weeks'] = []
         return context
 

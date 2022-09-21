@@ -61,7 +61,7 @@ class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
 
 
     def test_func(self):
-        return self.request.user == FitnessUser.objects.filter(id = self.kwargs['pk'])
+        return self.request.user == FitnessUser.objects.get(id = self.kwargs['pk'])
 
 
     def get_context_data(self, **kwargs):
