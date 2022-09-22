@@ -12,29 +12,33 @@ from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from users.models import FitnessUser
 from .models import SingleWorkout, Workout_template, Week
 # Create your views here.
 
-class WeeklyListView(LoginRequiredMixin, ListView):
-    model = Workout_template
+class WeeklyDetailView(LoginRequiredMixin, DetailView):
+    model = Week
     template_name = "workout/weekly_view.html"
 
     def get_context_data(self, **kwargs):
-        context = super(WeeklyListView, self).get_context_data(**kwargs)
-        context['template'] = Workout_template.objects.get(name = self.request.user.template)
-        context['template_weeks'] = []
+        context = super(WeeklyDetailView, self).get_context_data(**kwargs)
+        context['week'] = Week.objects.get(slug = self.kwargs['slug'])
         return context
 
 class WorkoutDetailView(LoginRequiredMixin, DetailView):
     model = SingleWorkout
     template_name = 'workout/daily_view.html'
 
-    def get_daily_exercise(self, context, name, week, index):
-        context['workout'] = Workout_template.objects.filter(
-            name=name
-        ).filter(week=Workout_template.weeks[week]).filter(
-            index = week[index])
+    def get_context_data(self, **kwargs):
+        context = super(WorkoutDetailView, self).get_context_data(**kwargs)
+        context['exercise'] = SingleWorkout.objects.get(slug = self.kwargs['slug'])
         return context
 
+class TemplateListView(LoginRequiredMixin, ListView):
+    model = Workout_template
+    template_name = "workout/template_view.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateListView, self).get_context_data(**kwargs)
+        context['template'] = Workout_template.objects.get(name = self.request.user.template_id)
+        return context
 

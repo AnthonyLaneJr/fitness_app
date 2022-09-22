@@ -3,5 +3,9 @@
 {% block title %}Template View{% endblock title %}
 
 {% block content %}
-
+Template View
+<br>
+{{template}}
+<br><br>
+{% for week in template.weeks.all %}<a href="{{week.get_absolute_url}}">{{week}}</a><br>{% endfor %}
 {% endblock content %}

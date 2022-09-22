@@ -48,10 +48,18 @@ class AccountTemplateView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/view_account.html"
 
+    def get_context_data(self, **kwargs):
+        user = FitnessUser.objects.get(username=self.request.user)
+        return super().get_context_data(**kwargs)
+
 
 class SettingsPageView(LoginRequiredMixin, TemplateView):
     model = FitnessUser
     template_name = "users/settings.html"
+
+    def get_context_data(self, **kwargs):
+        user = FitnessUser.objects.get(username=self.request.user)
+        return super().get_context_data(**kwargs)
 
 class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = FitnessUser

@@ -6,12 +6,13 @@
 View Account
 {% if request.user.is_authenticated %}
     <p>User = {{ request.user }}</p>
-    <p>Goal = {{ request.user.goal }}</p>
+    <p>Pk = {{ request.user.pk }}</p>
     <p>Height = {{ request.user.height }}</p>
     <p>Weight = {{ request.user.weight }}</p>
     <p>Age = {{ request.user.age_category }}</p>
-    <p>Template = {{ request.user.template }}</p>
-    <p>Pk = {{ request.user.pk }}</p>
+    <p>Goal = {{ request.user.get_goal_display }}</p>
+    <p>Frequency = {{ request.user.get_exercise_frequency_display }}</p>
+    <p>Template = {{ request.user.template_id }}</p>
     <a href="update/{{request.user.pk}}/">Update account</a>
 {% endif %}
 {% endblock content %}
