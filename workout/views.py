@@ -1,7 +1,5 @@
 from multiprocessing import context
-from re import template
-from ssl import Purpose
-from typing import List
+from urllib import request
 from django.views.generic import (
     ListView,
     DetailView,
@@ -11,8 +9,8 @@ from django.views.generic import (
 from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from .models import SingleWorkout, Workout_template, Week
+from users.forms import CustomWorkoutChangeForm
 # Create your views here.
 
 class WeeklyDetailView(LoginRequiredMixin, DetailView):
@@ -24,14 +22,19 @@ class WeeklyDetailView(LoginRequiredMixin, DetailView):
         context['week'] = Week.objects.get(slug = self.kwargs['slug'])
         return context
 
-class WorkoutDetailView(LoginRequiredMixin, DetailView):
+class WorkoutDetailView(LoginRequiredMixin, UpdateView):
     model = SingleWorkout
     template_name = 'workout/daily_view.html'
+    form_class = CustomWorkoutChangeForm
+    success_url = reverse_lazy("template")
 
     def get_context_data(self, **kwargs):
         context = super(WorkoutDetailView, self).get_context_data(**kwargs)
         context['exercise'] = SingleWorkout.objects.get(slug = self.kwargs['slug'])
+        workout = SingleWorkout.objects.get(slug = self.kwargs['slug'])
+        user = self.request.user
         return context
+
 
 class TemplateListView(LoginRequiredMixin, ListView):
     model = Workout_template

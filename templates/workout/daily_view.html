@@ -28,4 +28,9 @@ workout:
 {{ exercise.exercise_5 }}
 <br>
 {{ exercise.description_5 }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Confirm">
+</form>
 {% endblock content %}

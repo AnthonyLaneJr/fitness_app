@@ -5,7 +5,7 @@
 {% block content %}
 Weekly View
 <br><br>
-{{week}}
+{{week.get_order_display}}
 days:
 <br>
 {% for day in week.exercise_list.all %}<a href="{{ day.get_absolute_url }}">{{day}}</a><br>{% endfor %}

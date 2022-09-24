@@ -7,5 +7,5 @@ Template View
 <br>
 {{template}}
 <br><br>
-{% for week in template.weeks.all %}<a href="{{week.get_absolute_url}}">{{week}}</a><br>{% endfor %}
+{% for week in template.weeks.all %}<a href="{{week.get_absolute_url}}">{{week.get_order_display}}</a><br>{% endfor %}
 {% endblock content %}

@@ -3,9 +3,9 @@ from django.urls import reverse
 
 # Create your models here.  
 class Purpose(models.IntegerChoices):
-    weight_loss = 0,('Weight Loss')
-    weight_gain = 1,('Weight gain')
-    weight_maintenance = 2,('Weight Maintenance')
+    weight_loss = 0,('Weight Loss.')
+    weight_gain = 1,('Weight Gain.')
+    weight_maintenance = 2,('Weight Maintenance.')
 
 
 class Frequency(models.IntegerChoices):
