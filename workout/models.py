@@ -53,6 +53,7 @@ class Week(models.Model):
     name = models.CharField(max_length=128, default='test template')
     order = models.IntegerField(default=1, choices=WeekNumber.choices)
     goal = models.IntegerField(default=1, choices=Purpose.choices)
+    frequency = models.IntegerField(default=1, choices=Frequency.choices)
     exercise_list = models.ManyToManyField(SingleWorkout)
     completed_status = models.BooleanField(default=False)
     slug = models.SlugField(null=False, unique=True)
@@ -66,6 +67,7 @@ class Week(models.Model):
 
 class Workout_template(models.Model):
     name = models.CharField(max_length=128, default='test template')
+    description = models.TextField(default='Test Description')
     goal = models.IntegerField(default=2, choices=Purpose.choices)
     frequency = models.IntegerField(default=1, choices=Frequency.choices)
     weeks = models.ManyToManyField(Week)
