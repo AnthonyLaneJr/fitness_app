@@ -12,4 +12,7 @@ Home Page
 <br>
 <br>
 <a href="{% url 'logout' %}">logout</a>
+{% for workout in request.user.completed_workouts.all %}
+<h1>{{workout.name}}</h1>
+{% endfor %}
 {% endblock content %}
