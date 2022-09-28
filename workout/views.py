@@ -22,17 +22,15 @@ class WeeklyDetailView(LoginRequiredMixin, DetailView):
         context['week'] = Week.objects.get(slug = self.kwargs['slug'])
         return context
 
-class WorkoutDetailView(LoginRequiredMixin, UpdateView):
+class WorkoutUpdateView(LoginRequiredMixin, UpdateView):
     model = SingleWorkout
     template_name = 'workout/daily_view.html'
     form_class = CustomWorkoutChangeForm
     success_url = reverse_lazy("template")
 
     def get_context_data(self, **kwargs):
-        context = super(WorkoutDetailView, self).get_context_data(**kwargs)
+        context = super(WorkoutUpdateView, self).get_context_data(**kwargs)
         context['exercise'] = SingleWorkout.objects.get(slug = self.kwargs['slug'])
-        workout = SingleWorkout.objects.get(slug = self.kwargs['slug'])
-        user = self.request.user
         return context
 
 
