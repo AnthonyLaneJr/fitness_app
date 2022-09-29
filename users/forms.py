@@ -1,9 +1,10 @@
-from  django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from django import forms
-
-from workout.models import Workout_template
+from  django.contrib.auth.forms import (
+    UserChangeForm,
+    UserCreationForm,
+    AuthenticationForm,
+    PasswordChangeForm,
+    PasswordResetForm,)
 from .models import FitnessUser
-from users.models import FitnessUser
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
@@ -16,3 +17,15 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('goal', 'gender', 'age_category', 'exercise_frequency', 'weight', 'height', 'template_id',)
         exclude = ('template_id',)
         UserChangeForm.password = None
+
+class UserLoginForm(AuthenticationForm):
+    model = FitnessUser
+    fields = ('username', 'password',)
+
+class MyPasswordResetForm(PasswordResetForm):
+    model = FitnessUser
+    fields = ('email',)
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    model = FitnessUser
+    fields = ('password',)

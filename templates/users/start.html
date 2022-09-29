@@ -9,16 +9,40 @@
         <img src="#" alt="Logo">
     </Div>
         <h1 class="start">Welcome Back!</h1>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.pasword_label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            <!--  <input type="text" class="start" placeholder="Username:">
 
-        <input type="text" class="start" placeholder="Username:">
+                  <input type="text" placeholder="Password:" class="start">  -->
+        
+            <button class="submit start" aria-placeholder="Create Account" type="submit" value="login">   Login   <i class="fa-solid fa-right-to-bracket"></i></button>
+        </form>
 
-        <input type="text" placeholder="Password:" class="start">
-
-        <button class="submit start" aria-placeholder="Create Account"> <a href="{% url 'login' %}">Login</a>     <i class="fa-solid fa-right-to-bracket"></i></button>
         <button class="submit start" aria-placeholder="Create Account"> <a href="{% url 'register' %}">New User</a>     <i class="fa-solid fa-user-plus"></i></button>
 
         <div class="navigation_bar start">
             <Small class="register start"><button class="submit start" aria-placeholder="Create Account">Reset Password</button></Small>
         </div>
+        <Small class="login white-text">Forgot your Password? <a class="white-text" href="{% url 'password_reset' %}">Click here</a> to reset it.</Small>
 </div>
 {% endblock content %}
+
+<!-- 
+<h1 class="login">Log In</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+<Small class="login white-text">Forgot your Password? <a class="white-text" href="{% url 'password_reset_form' %}">Click here</a> to reset it.</Small>
+-->
