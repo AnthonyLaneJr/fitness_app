@@ -36,8 +36,6 @@ class WorkoutDetailView(LoginRequiredMixin, DetailView):
         context['workouts'] = {}
         for workout in user.completed_workouts.all():
             context['workouts'][workout.name] = workout
-        
-
         return context
 
 
@@ -45,6 +43,14 @@ def update_workout_data(request, slug):
     workout = SingleWorkout.objects.get(slug=slug)
     endUser = FitnessUser.objects.get(pk = request.user.pk)
     endUser.completed_workouts.add(workout)
+    endUser.save()
+    return redirect(reverse('daily', kwargs={'slug':workout.slug}))
+
+
+def remove_workout_data(request, slug):   
+    workout = SingleWorkout.objects.get(slug=slug)
+    endUser = FitnessUser.objects.get(pk = request.user.pk)
+    endUser.completed_workouts.remove(workout)
     endUser.save()
     return redirect(reverse('daily', kwargs={'slug':workout.slug}))
 

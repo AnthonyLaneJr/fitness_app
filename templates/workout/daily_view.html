@@ -29,9 +29,13 @@ workout:
 <br>
 {{ exercise.description_5 }}
 <br>
-{{ workouts }}
+<br>
 {% if exercise.name in workouts %}
 <h5>Workout Already Completed</h5>
+<form method="POST" action="{% url 'remove' slug=exercise.slug %}">
+    {% csrf_token %}
+    <button type="submit">Reset</button>
+</form>
 {% else %}
 <form method="POST" action="{% url 'update' slug=exercise.slug %}">
     {% csrf_token %}

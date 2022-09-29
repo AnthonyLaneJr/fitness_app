@@ -13,6 +13,7 @@ View Account
     <p>Goal = {{ request.user.get_goal_display }}</p>
     <p>Frequency = {{ request.user.get_exercise_frequency_display }}</p>
     <p>Template = {{ request.user.template_id }}</p>
+    <p>Template_id = {{ request.user.template_id.id }}</p>
     <a href="update/{{request.user.pk}}/">Update account</a>
 {% endif %}
 {% endblock content %}

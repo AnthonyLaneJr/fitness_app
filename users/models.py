@@ -37,17 +37,24 @@ class FitnessUser(AbstractUser):
         null=True
     )
     exercise_frequency = models.IntegerField(default=1 ,choices=Frequency.choices)
-
-    # trying to automatically assign the temaplate id to this attribute within my user model. This will be based off of the users goal and frequencies which are both imports from the workout application and are uniqely referenced in each template. Meaning each frequency and goal type has a match, Trying to brainstorm a way to automate the foreign key assignmnet based on a matching goal frequency, that is set during the users account creation and/or user account update.
     template_id = models.ForeignKey(
         Workout_template,
+        default=1,
         on_delete=models.CASCADE,
         blank=True,
         null=True
         )
-
-    # trying to automatically assign the single workout(s) to this attribute within my user model. The ideal is then during template rendering to compare the completed workouts to the users template to determine whether they have or haven't completed said workout. This is currently being worked on in the WokroutDetailView in the workout applications views.py
     completed_workouts = models.ManyToManyField(SingleWorkout)
+
+    def set_template(self):
+        template = Workout_template.objects.get(goal=self.goal, frequency=self.exercise_frequency)
+        return template
 
     def get_absolute_url(self):
         return reverse('detail', args=[self.id])
+
+    def save(self, *args, **kwargs):
+        template = Workout_template.objects.get(goal=self.goal, frequency=self.exercise_frequency)
+        self.template_id=template
+        super(FitnessUser, self).save(*args, **kwargs)
+        return self.template_id

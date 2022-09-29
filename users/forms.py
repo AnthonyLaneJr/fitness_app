@@ -8,7 +8,7 @@ from users.models import FitnessUser
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = FitnessUser
-        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'goal', 'gender', 'age_category', 'exercise_frequency', 'email',)
+        fields = UserCreationForm.Meta.fields + ('first_name', 'last_name', 'goal', 'gender', 'age_category', 'weight', 'height', 'exercise_frequency', 'email',)
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
@@ -16,6 +16,3 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('goal', 'gender', 'age_category', 'exercise_frequency', 'weight', 'height', 'template_id',)
         exclude = ('template_id',)
         UserChangeForm.password = None
-
-        def save():
-            pass
