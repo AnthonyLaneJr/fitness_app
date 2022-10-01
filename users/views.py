@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import FitnessUser
-from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm, MyPasswordChangeForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm, MyPasswordChangeForm, MyPasswordResetForm
 
 
 class HelpPageView(LoginRequiredMixin ,DetailView):
@@ -22,7 +22,9 @@ class NutritionalPageView(LoginRequiredMixin ,DetailView):
 
 
 
-class PasswordResetPageView(UpdateView):
+class PasswordResetPageView(FormView):
+    model = FitnessUser
+    form_class = MyPasswordResetForm
     template_name = "registration/password_reset_form.html"
     success_url = reverse_lazy('start')
 
