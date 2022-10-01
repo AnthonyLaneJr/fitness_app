@@ -37,7 +37,7 @@ class StartPageView(FormView):
     template_name = "users/start.html"
 
 
-class PasswordChangePageView(LoginRequiredMixin, UpdateView):
+class PasswordChangePageView(LoginRequiredMixin, FormView):
     model = FitnessUser
     form_class = MyPasswordChangeForm
     template_name = "registration/password_change_form.html"
