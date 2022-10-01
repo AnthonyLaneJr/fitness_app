@@ -11,8 +11,6 @@ urlpatterns = [
     path('about/', HelpPageView.as_view(), name='about'),
     path("about/nutrition/", NutritionalPageView.as_view(), name='nutrition'),
     path('register/', RegistrationPageView.as_view(), name='register'),
-    path('register/change/<int:pk>/', PasswordChangePageView.as_view(success_url='home/'), name='change_password'),
-    path('register/reset/', PasswordResetPageView.as_view(), name='reset_password'),
     path('account/', AccountTemplateView.as_view(), name='account'),
     path('account/update/<int:pk>/', UpdateAccountPageView.as_view(), name='update_account'),
     path('account/settings/', SettingsPageView.as_view(), name='settings'),

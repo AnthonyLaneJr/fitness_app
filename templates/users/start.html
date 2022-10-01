@@ -31,9 +31,10 @@
         <button class="submit start" aria-placeholder="Create Account"> <a href="{% url 'register' %}">New User</a>     <i class="fa-solid fa-user-plus"></i></button>
 
         <div class="navigation_bar start">
-            <Small class="register start"><button class="submit start" aria-placeholder="Create Account">Reset Password</button></Small>
+            <Small class="register start"><button class="submit start"><a href="{% url 'password_reset' %}">
+                Reset Password</a></button></Small>
         </div>
-        <Small class="login white-text">Forgot your Password? <a class="white-text" href="{% url 'password_reset' %}">Click here</a> to reset it.</Small>
+
 </div>
 {% endblock content %}
 
