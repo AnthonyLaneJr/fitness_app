@@ -8,4 +8,5 @@ Template View
 {{template}}
 <br><br>
 {% for week in template.weeks.all %}<a href="{{week.get_absolute_url}}">{{week.get_order_display}}</a><br>{% endfor %}
+<br>
 {% endblock content %}
