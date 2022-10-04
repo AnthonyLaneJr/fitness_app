@@ -15,5 +15,9 @@ View Account
     <p>Template = {{ request.user.template_id }}</p>
     <p>Template_id = {{ request.user.template_id.id }}</p>
     <a href="update/{{request.user.pk}}/">Update account</a>
+    <form method="POST" action="{% url 'update_workouts' %}">
+        {% csrf_token %}
+        <button type="submit">Reset Workout Progress</button>
+    </form>
 {% endif %}
 {% endblock content %}

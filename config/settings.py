@@ -138,6 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'start'
+LOGIN_URL = 'start'
 
 #EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -146,7 +147,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
-#EMAIL_HOST = env.str("EMAIL_HOST")
-#EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
-#EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL")

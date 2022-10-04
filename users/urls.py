@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    AccountTemplateView, SettingsPageView, UpdateAccountPageView, StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView
+    AccountTemplateView, SettingsPageView, UpdateAccountPageView, StartPageView, HomePageView, HelpPageView, NutritionalPageView, RegistrationPageView, remove_workout_data
 )
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('account/', AccountTemplateView.as_view(), name='account'),
     path('account/update/<int:pk>/', UpdateAccountPageView.as_view(), name='update_account'),
     path('account/settings/', SettingsPageView.as_view(), name='settings'),
+    path('update/', remove_workout_data, name='update_workouts'),
 ]

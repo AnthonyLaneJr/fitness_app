@@ -8,10 +8,12 @@ from django.views.generic import (
     FormView
 )
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import FitnessUser
 from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm
+from django.urls import reverse_lazy, reverse
 
 
 class HelpPageView(LoginRequiredMixin ,DetailView):
@@ -58,6 +60,13 @@ class SettingsPageView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         user = FitnessUser.objects.get(username=self.request.user)
         return super().get_context_data(**kwargs)
+
+
+def remove_workout_data(request):   
+    endUser = FitnessUser.objects.get(pk = request.user.pk)
+    endUser.completed_workouts.clear()
+    endUser.save()
+    return redirect(reverse('template'))
 
 
 class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
