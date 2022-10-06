@@ -58,3 +58,8 @@ class FitnessUser(AbstractUser):
         self.template_id=template
         super(FitnessUser, self).save(*args, **kwargs)
         return self.template_id
+
+    def reset_workout_progress(self):
+        workouts = self.completed_workouts.all
+        self.completed_workouts.remove(workouts)
+        self.save()

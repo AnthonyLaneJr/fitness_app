@@ -4,7 +4,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     UpdateView,
-    DeleteView
+    DeleteView,
 )
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
@@ -41,8 +41,10 @@ class WorkoutDetailView(LoginRequiredMixin, DetailView):
 
 def update_workout_data(request, slug):   
     workout = SingleWorkout.objects.get(slug=slug)
+    test = SingleWorkout.objects.get(slug='test-workout')
     endUser = FitnessUser.objects.get(pk = request.user.pk)
     endUser.completed_workouts.add(workout)
+    endUser.completed_workouts.remove(test)
     endUser.save()
     return redirect(reverse('daily', kwargs={'slug':workout.slug}))
 

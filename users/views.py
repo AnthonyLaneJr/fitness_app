@@ -8,23 +8,20 @@ from django.views.generic import (
     FormView
 )
 from django.urls import reverse_lazy
+from django.shortcuts import redirect, render
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import FitnessUser
-from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm, MyPasswordChangeForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm
+from django.urls import reverse_lazy, reverse
 
 
-class HelpPageView(LoginRequiredMixin ,DetailView):
+class HelpPageView(LoginRequiredMixin, DetailView):
     template_name = "users/help_page.html"
 
-class NutritionalPageView(LoginRequiredMixin ,DetailView):
+class NutritionalPageView(LoginRequiredMixin, TemplateView):
     template_name = "users/nutritional.html"
 
-
-
-class PasswordResetPageView(UpdateView):
-    template_name = "registration/password_reset_form.html"
-    success_url = reverse_lazy('start')
 
 
 '''##############   Below is already completed   
@@ -37,32 +34,7 @@ class StartPageView(FormView):
     template_name = "users/start.html"
 
 
-class PasswordChangePageView(LoginRequiredMixin, FormView):
-    model = FitnessUser
-    form_class = MyPasswordChangeForm
-    template_name = "registration/password_change_form.html"
-    success_url = reverse_lazy("home") 
-
-    def test_func(self):
-        return self.request.user == FitnessUser.objects.get(id = self.kwargs['pk'])
-
-
-    def get_context_data(self, **kwargs):
-        context = super(PasswordChangePageView, self).get_context_data(**kwargs)
-        context['user'] = FitnessUser.objects.get(username=self.request.user)
-        context['form'] = MyPasswordChangeForm(context['user'])
-        return context    
-
-
-    def form_valid(self, form):
-        if form.instance.pk != self.request.user.pk:
-            raise PermissionDenied(
-                "You are not authorized to update this accounts info."
-            )
-        return super().form_valid(form)
-
-
-class HomePageView(LoginRequiredMixin ,TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = "users/home.html"
 
 
@@ -90,6 +62,13 @@ class SettingsPageView(LoginRequiredMixin, TemplateView):
         return super().get_context_data(**kwargs)
 
 
+def remove_workout_data(request):   
+    endUser = FitnessUser.objects.get(pk = request.user.pk)
+    endUser.completed_workouts.clear()
+    endUser.save()
+    return redirect(reverse('template'))
+
+
 class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = FitnessUser
     form_class = CustomUserChangeForm
@@ -111,3 +90,11 @@ class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
                 "You are not authorized to update this accounts info."
             )
         return super().form_valid(form)
+
+
+def custom_403_error_page(request, exception):
+    return render(request, 'users/403.html', {})
+
+
+def custom_405_error_page(request, exception):
+    return render(request, 'users/405.html', {})

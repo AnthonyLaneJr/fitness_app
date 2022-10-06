@@ -21,6 +21,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include ('users.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('workouts/', include ('workout.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+handler403 = 'users.views.custom_403_error_page'
+handler405 = 'users.views.custom_405_error_page'
