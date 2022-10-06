@@ -3,43 +3,109 @@
 {% block title %}Daily View{% endblock title %}
 
 {% block content %}
-Daily View
-<br>
-{{exercise}}
-<br>
-workout:
-<br>
-{{ exercise.exercise_1 }}
-<br>
-{{ exercise.description_1 }}
-<br>
-{{ exercise.exercise_2 }}
-<br>
-{{ exercise.description_2 }}
-<br>
-{{ exercise.exercise_3 }}
-<br>
-{{ exercise.description_3 }}
-<br>
-{{ exercise.exercise_4 }}
-<br>
-{{ exercise.description_4 }}
-<br>
-{{ exercise.exercise_5 }}
-<br>
-{{ exercise.description_5 }}
-<br>
-<br>
+<nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-dumbbell"></i>
+        Fitness-App
+      </a>
+      <h6>{{ request.user }}</h6>
+    </div>
+</nav>
+
+
+<div class="daily">
+    
+    <h1 class="exercisetitle">{{exercise}}</h1>
+    
+    <div class="exercise">
+        {{ exercise.exercise_1 }}
+        <br>
+        <br>
+        {{ exercise.description_1 }}
+    </div>
+
+    <div class="exercise">
+        {{ exercise.exercise_2 }}
+        <br>
+        <br>
+        {{ exercise.description_2 }}
+    </div>
+
+    
+    <div class="exercise">
+        {{ exercise.exercise_3 }}
+        <br>
+        <br>
+        {{ exercise.description_3 }}
+    </div>
+
+    <div class="exercise">
+        {{ exercise.exercise_4 }}
+        <br>
+        <br>
+        {{ exercise.description_4 }}
+    </div>
+
+    <div class="exercise">
+        {{ exercise.exercise_5 }}
+        <br>
+        <br>
+        {{ exercise.description_5 }}
+    </div>
 {% if exercise.name in workouts %}
-<h5>Workout Already Completed</h5>
-<form method="POST" action="{% url 'remove' slug=exercise.slug %}">
+<h5 class="workoutcomplete">Workout Already Completed</h5>
+
+<div class="dailyresetbtn">
+    <form method="POST" action="{% url 'remove' slug=exercise.slug %}">
     {% csrf_token %}
-    <button type="submit">Reset</button>
+    <button class="btn btn-primary btn-sm">Reset</button>
 </form>
+</div>
+
+
+
 {% else %}
-<form method="POST" action="{% url 'update' slug=exercise.slug %}">
-    {% csrf_token %}
-    <button type="submit">Complete</button>
-</form>
+
+<div class="dailycompletebtn">
+   <form method="POST" action="{% url 'update' slug=exercise.slug %}">
+        {% csrf_token %}
+        <button class="btn btn-primary btn-sm">Complete</button>
+    </form>  
+</div>
+
+
+
+</div>
+
+<div class="dailynavbar">
+   <ul class="nav sticky-bottom bg-dark justify-content-center">
+    <li class="nav-item">
+
+      <a class="nav-link active" href="{% url 'home' %}">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'template' %}">
+        <i class="fa-solid fa-dumbbell"></i>
+  
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'nutrition' %}">
+        <i class="fa-solid fa-bowl-food"></i>
+  
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account' %}">
+        <i class="fa-solid fa-gear"></i>
+  
+      </a>
+    </li>
+  </ul> 
+</div>
+
 {% endif %}
 {% endblock content %}

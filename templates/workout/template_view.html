@@ -3,10 +3,61 @@
 {% block title %}Template View{% endblock title %}
 
 {% block content %}
-Template View
-<br>
-{{template}}
-<br><br>
-{% for week in template.weeks.all %}<a href="{{week.get_absolute_url}}">{{week.get_order_display}}</a><br>{% endfor %}
-<br>
+<nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-dumbbell"></i>
+        Fitness-App
+      </a>
+      <h6>{{ request.user }}</h6>
+    </div>
+  </nav>
+
+
+
+
+<div class="template">
+  
+  <h3 class="templatetitle">{{template}}</h1>
+  
+  <div class="weeks">  
+    {% for week in template.weeks.all %}
+    <button class="btn btn-primary btn-sm">
+      <a href="{{week.get_absolute_url}}">
+      {{week.get_order_display}}
+      </a>
+    </button>  
+    {% endfor %}
+  </div>
+    
+</div>
+
+<div class="templatenavbar">
+  <ul class="nav sticky-bottom bg-dark justify-content-center">
+   <li class="nav-item">
+
+     <a class="nav-link active" href="{% url 'home' %}">
+       <i class="fa-solid fa-house"></i>
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'template' %}">
+       <i class="fa-solid fa-dumbbell"></i>
+ 
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'nutrition' %}">
+       <i class="fa-solid fa-bowl-food"></i>
+ 
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'account' %}">
+       <i class="fa-solid fa-gear"></i>
+ 
+     </a>
+   </li>
+ </ul> 
+</div>
 {% endblock content %}

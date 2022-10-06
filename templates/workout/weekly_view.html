@@ -1,12 +1,60 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
+{% block title %}Weekly View{% endblock title %} 
+{%block content %} 
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-dumbbell"></i>
+      Fitness-App
+    </a>
+    <h6>{{ request.user }}</h6>
+  </div>
+</nav>
 
-{% block title %}Weekly View{% endblock title %}
+<div class="weekly">
 
-{% block content %}
-Weekly View
-<br><br>
-{{week.get_order_display}}
-days:
-<br>
-{% for day in week.exercise_list.all %}<a href="{{ day.get_absolute_url }}">{{day}}</a><br>{% endfor %}
+<h1 class="weeklytitle">Weekly View</h1> 
+<div class="weeklyworkouts">
+  {{week.get_order_display}} days:
+  {% for day in week.exercise_list.all %}
+  <button class="btn btn-primary btn-sm">
+    <a href="{{ day.get_absolute_url }}">{{day}}</a>
+  </button>
+  {% endfor %}
+</div>
+
+<br />
+
+
+
+
+
+
+</div>
+
+
+<div class="weeklynavbar">
+  <ul class="nav sticky-bottom bg-dark justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'home' %}">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'template' %}">
+        <i class="fa-solid fa-dumbbell"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'nutrition' %}">
+        <i class="fa-solid fa-bowl-food"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account' %}">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+    </li>
+  </ul>
+</div>
 {% endblock content %}
