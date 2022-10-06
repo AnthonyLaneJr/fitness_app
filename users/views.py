@@ -8,7 +8,7 @@ from django.views.generic import (
     FormView
 )
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.core.exceptions import BadRequest, PermissionDenied
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import FitnessUser
@@ -16,10 +16,10 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm, UserLoginForm
 from django.urls import reverse_lazy, reverse
 
 
-class HelpPageView(LoginRequiredMixin ,DetailView):
+class HelpPageView(LoginRequiredMixin, DetailView):
     template_name = "users/help_page.html"
 
-class NutritionalPageView(LoginRequiredMixin ,DetailView):
+class NutritionalPageView(LoginRequiredMixin, TemplateView):
     template_name = "users/nutritional.html"
 
 
@@ -34,7 +34,7 @@ class StartPageView(FormView):
     template_name = "users/start.html"
 
 
-class HomePageView(LoginRequiredMixin ,TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = "users/home.html"
 
 
@@ -90,3 +90,11 @@ class UpdateAccountPageView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
                 "You are not authorized to update this accounts info."
             )
         return super().form_valid(form)
+
+
+def custom_403_error_page(request, exception):
+    return render(request, 'users/403.html', {})
+
+
+def custom_405_error_page(request, exception):
+    return render(request, 'users/405.html', {})
