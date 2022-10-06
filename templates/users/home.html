@@ -29,7 +29,6 @@
     <p><i class="fa-solid fa-ruler"></i> {{ request.user.height }}</p>
     <p><i class="fa-solid fa-weight-scale"></i>{{ request.user.weight }}</p>
     <p>Age: {{ request.user.age_category }}</p>
-    <p>Pk: {{ request.user.pk }}</p>
 
     {% endif %}
 
@@ -39,7 +38,6 @@
   <p>Goal: {{ request.user.get_goal_display }}</p>
   <p>Frequency: {{ request.user.get_exercise_frequency_display }}</p>
   <p>Template: {{ request.user.template_id }}</p>
-  <p>Template ID: {{ request.user.template_id.id }}</p>
   
 
   {% endif %}
@@ -52,13 +50,6 @@
     <a href="{% url 'logout' %}">logout</a>
   </button>
 </div>
-
-{% for workout in request.user.completed_workouts.all %}
-    <h1>{{workout.name}}</h1>
-    {% endfor %}
-
-
-
 
 
 </div>
