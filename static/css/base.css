@@ -4,180 +4,609 @@ dark blue (back of buttons) #023047
 gray (unused really) #707070
 light black backing - #8ECAE6
 medium lblue (overall backgroun) #219EBC   */
+
 *{
     max-width: 428px;
     max-height: 926px;
+    
 }
 div.base{
-    background-color: #219EBC;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+   
+        background-color: black;
+        color: white;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    
+    
 }
-div.navigation_bar{
-    display: flex;
-    align-items: center;
-    align-content: space-between;
-    width: 100%;
-    padding: 5%;
-    background-color: #219EBC;
-}
-/* Start Page */
-div.image{
-    position: absolute;
-    width: 90%;
-    height: 50%;
-    background-color: #8ECAE6;
-    top:03%;
-}
-div.start{
-    margin-left: 2%;
-    margin-top: 0%;
-}
-img{
-    height: 50%;
-}
-h1.start{
-    padding-top: 120%;
-    padding-bottom: 2%;
-    color: #FFB703;
-    font-size: xx-large;
-}
-button.start{
-    font-size: large;
-    color: #FFB703;
-    text-decoration: none;
-    background-color: #023047;
-}
-div.selctions{
-    background-color: #023047;
 
+/* Start Page */
+.welcometitle{
+    text-align: center;
+    margin-top: 100px;
 }
-input.start{
-    background-color: #023047;
-    width: 80%;
-    padding: 4%;
-    margin-top: 0%;
-    margin-bottom: 6%;
-    border-radius: 10%;
-}
+
+.homebuttons {
+    margin-top: 50PX;
+    border: 1px solid #212529;
+    background-color: #212529;
+    display: inline-block;
+    border: none;
+    padding: 45px;
+    margin-left: 35px;
+    border-radius: 25px;
+  }
+  .username{
+    margin-bottom: 30px;
+  }
+  .start button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+  button.btn {
+    display: block;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+    
+  }
+  .start a{
+    text-decoration: none !important;
+    color: white !important;
+  }
+  .start a:hover{
+    color: black !important;
+    
+  }
+
 
 /* Register page */
 
-div.register, div.page{
-    background-color: #219EBC;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.register .navbar-brand {
+    color: white;
 }
-div.logo_return{
-    padding-top: 10%;
-    height: 20%;
-    width: auto;
+.registertitle {
+    text-align: center;
+    margin-top: 20px;
 }
-div.register input{
-    width:150%;
-    padding: 6%;
-    margin: 1%;
+
+.registertitle{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top:20px;
 }
-::placeholder{
-    color: #FFB703;
+
+.registerinputs{
+    background-color: #212529;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    margin-top: 50px;
 }
-button.submit{
-    width: 70%;
-    text-decoration: #FFB703;
-    border-radius: 30%;
+
+.registernavbar{
+    margin-top: 40px;
 }
-h1.register{
-    color: #FFB703;
-    padding-left: 5%;
-}
-h3.register{
-    align-content: center;
-    padding: 5%;
-    color: #FFB703;
-}
-small.register{
-    max-width: 50%;
-    font-size: x-small;
-    color: #FFB703;
-}
-small.start{
-    max-width: 80%;
-    font-size: .75em;
-}
-img.register{
+.registerinputs button.btn{  
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
     width: 30%;
-    height: 10%;
-    color: #FFB703;
-}
-i{
-    color: #FFB703;
+    background-color: #35c8a8;
+    border-radius: 25px;
+    
 }
 
-/* Nutritional Recommendation Page */
-
-div.grid-container{
-    text-align: start;
-    width: 65%;
-    margin-top: 5%;
-    display: grid;
-    column-gap: 4%;
-    row-gap: 2%;
-    grid-template-columns: auto auto;
-}
-div.grid-item{
-background-color: white;
-color: #FFB703;
-min-width: 20%;
-}
-h3.nutrition{
-    align-content: center;
-    padding-top: 1%;
-    padding-bottom: 0%;
-    color: #FFB703;
-    max-width: 85%;
-}
-h3.akward-nut{
-    margin-left: 15%;
-}
-
+.registerinputs button.btn:hover{
+    background-color: white;
+    color: black;
+  }
 /* password reset page */
-div.reset_img{
-    position: absolute;
-    width: 90%;
-    height: 50%;
-    background-color: #8ECAE6;
-    top: 10%;
+
+
+/*Navbar*/
+.navbar .navbar-brand {
+    color: white;
 }
-div.reset{
-    width: 100%;
+
+/* footer */
+
+a.nav-link {
+    color: white;
+}
+a.nav-link:hover {
+    color: #35c8a8;
+}
+
+/*Daily*/
+
+.exercisetitle{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top:20px;
+}
+.exercise{
+    
+    background-color: #212529;
+    border: none;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 25px;
+}
+.workoutcomplete{
     text-align: center;
 }
-div.reset_return{
-    display: flex;
-    align-items: center;
+.dailyresetbtn button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+
+.dailyresetbtn button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+
+.dailycompletebtn button.btn{  
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+    
+}
+
+.dailycompletebtn button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+
+.dailynavbar{
+    margin-top: 33px;
+    
+}
+
+/*Template*/
+
+.templatetitle{
     text-align: center;
-    align-content: space-between;
-    width: 100%;
-    padding: 5%;
-    background-color: #219EBC;
+    margin-bottom: 30px;
+    margin-top:20px;
+
 }
-small.reset{
-    width: 100%;
-    font-size: large;
-    color: #FFB703;
-    margin-bottom: 10%;
+
+.weeks{
+    
+    background-color: #212529;
+    border: none;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 150px;
 }
-h1.reset{
-    padding-top: 120%;
-    padding-bottom: 2%;
-    color: #FFB703;
-    font-size: 2em;
+.weeks button.btn {
+    
+    margin: 25%;
+    border: none;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    width: 50%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+    
+  }
+  .weeks button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+  .weeks a{
+    text-decoration: none !important;
+    color: white !important;
+  }
+  .weeks a:hover{
+    color: black !important;
+    
+  }
+.templatenavbar{
+    margin-top: 350px;
 }
-h1.reset_return{
-    color: #FFB703;
-    padding-left: 15%;
+
+
+
+
+
+
+/*Home */
+
+
+.userinfo{
+    background-color: #212529;
+    border: none;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 100px;
 }
+
+.workoutinfo {
+  background-color: #212529;
+  border: none;
+  padding: 20px;
+  margin: 50px;
+  border-radius: 25px;
+  margin-top: 50px;
+}
+
+.homenavbar{
+  margin-top: 95px;
+}
+
+
+.accountlogout button.btn:hover{
+  background-color: white;
+  color: black;
+}
+.accountlogout button.btn {
+  margin: 35%;
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 90px;
+  width: 30%;
+  background-color: #35c8a8;
+  border-radius: 25px;
+  
+}
+.accountlogout a{
+  text-decoration: none !important;
+  color: white !important;
+}
+.accountlogout a:hover{
+  color: black !important;
+  
+}
+
+.userinfo i.fa-solid{
+  margin-right: 10px;
+}
+
+/*Weekly*/
+.weeklytitle{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top:20px;
+}
+
+.weeklyworkouts{
+    background-color: #212529;
+    border: none;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 100px;
+}
+
+.weeklyworkouts button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    width: 40%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+
+.weeklyworkouts button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+
+
+
+  .weeklyworkouts a{
+    text-decoration: none !important;
+    color: white !important;
+  }
+  .weeklyworkouts a:hover{
+    color: black !important;
+  }
+
+
+.weeklynavbar{
+    margin-top: 440px;
+}
+
+
+
+
+
+/*Account*/
+h1.account{
+    text-align: center;
+    margin-top:20px;
+    
+}
+
+.useraccountinfo{
+    background-color: #212529;
+    border: none;
+    padding: 20px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 40px;
+}
+
+.accountinfo {
+  background-color: #212529;
+  border: none;
+  padding: 20px;
+  margin: 50px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+.accounttitle{
+  text-align: center;
+  margin-top:20px;
+  margin-bottom: 30px;
+}
+
+.accountupdate{
+  background-color: #212529;
+  border: none;
+  padding: 30px;
+  margin: 50px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.updateaccount button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 30px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+.updateaccount a{
+    text-decoration: none !important;
+    color: white !important;
+}
+.updateaccount a:hover{
+  color: black !important;
+}
+
+.updateaccount button.btn:hover{
+    background-color: white;
+    color: black !important;
+  }
+  
+  .resetworkout button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+.resetworkout a{
+    text-decoration: none !important;
+    color: white !important;
+}
+.resetworkout a:hover{
+  color: black !important;
+}
+
+.resetworkout button.btn:hover{
+    background-color: white;
+    color: black !important;
+  }
+  
+
+.viewaccountnavbar{
+    margin-top: 60px;
+}
+
+
+
+.changepassword button.btn {
+  
+  margin: 35%;
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 100px;
+  width: 30%;
+  background-color: #35c8a8;
+  border-radius: 25px;
+  
+}
+.changepassword a{
+  text-decoration: none !important;
+  color: white !important;
+}
+.changepassword a:hover{
+  color: black !important;
+}
+
+.changepassword button.btn:hover{
+  background-color: white;
+  color: black !important;
+}
+
+
+
+.accountupdate button.btn {
+  margin: 25%;
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  width: 50%;
+  background-color: #35c8a8;
+  border-radius: 25px;
+  
+}
+.accountupdate button.btn:hover{
+  background-color: white;
+  color: black !important;
+}
+
+.accountnavbar{
+  margin-top: 175px;
+}
+
+
+
+/*Password_reset_done*/
+.emailinbox{
+    background-color: #212529;
+    border: none;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 200px;
+}
+.emailinboxtitle{
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 30px;
+}
+.passwordresetdonenavbar{
+    margin-top: 420px;
+}
+
+/*password_reset_form*/
+.passwordresettitle{
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 30px;
+}
+
+.passwordresetform{
+    background-color: #212529;
+    border: none;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 100px;
+}
+.passwordresetform button.btn{  
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+    
+}
+
+.passwordresetform button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+
+  .passwordresetformnavbar{
+    margin-top: 450px;
+  }
+
+  /*password_change_form*/
+  .passwordchangetitle{
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 30px;
+  }
+
+  .passwordchange{
+    background-color: #212529;
+    border: none;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 100px;
+  }
+
+.passwordchange button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+
+.passwordchange button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+.passwordchangenavbar{
+    margin-top: 345px;
+}
+
+/*password_change_done*/
+
+.successtitle{
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 30px;
+}
+
+.success{
+    background-color: #212529;
+    border: none;
+    padding: 30px;
+    margin: 50px;
+    border-radius: 25px;
+    margin-top: 100px;
+  }
+  .success p {
+    text-align: center;
+  }
+
+.success button.btn{
+    margin: 35%;
+    border: none;
+    margin-bottom: 0px;
+    margin-top: 40px;
+    width: 30%;
+    background-color: #35c8a8;
+    border-radius: 25px;
+}
+
+.success button.btn:hover{
+    background-color: white;
+    color: black;
+  }
+
+
+
+  .success a{
+    text-decoration: none !important;
+    color: white !important;
+  }
+  .success a:hover{
+    color: black !important;
+  }
+  
+  .passwordchangedonenavbar{
+    margin-top: 475px;
+  }
+
+
+
+
+

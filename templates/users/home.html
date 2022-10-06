@@ -3,16 +3,105 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-Home Page
-<p>User = {{ request.user }}</p>
-<a href="{% url 'account' %}">account</a>
-<br>
-<br>
-<a href="{% url 'template' %}">Template</a>
-<br>
-<br>
-<a href="{% url 'logout' %}">logout</a>
+<nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-dumbbell"></i>
+        Fitness-App
+      </a>
+      <h6><i class="fa-solid fa-user"></i>{{ request.user }}</h6>
+    </div>
+  </nav>
+
+<div class="home">
+
+
+
+ 
+
+
+
+<div class="userinfo">
+
+  {% if request.user.is_authenticated %}
+    <i class="fa-solid fa-user"></i>{{ request.user }}</p>
+    
+    <p><i class="fa-solid fa-ruler"></i> {{ request.user.height }}</p>
+    <p><i class="fa-solid fa-weight-scale"></i>{{ request.user.weight }}</p>
+    <p>Age: {{ request.user.age_category }}</p>
+    <p>Pk: {{ request.user.pk }}</p>
+
+    {% endif %}
+
+</div>
+<div class="workoutinfo">
+  {% if request.user.is_authenticated %}
+  <p>Goal: {{ request.user.get_goal_display }}</p>
+  <p>Frequency: {{ request.user.get_exercise_frequency_display }}</p>
+  <p>Template: {{ request.user.template_id }}</p>
+  <p>Template ID: {{ request.user.template_id.id }}</p>
+  
+
+  {% endif %}
+</div>
+
+    
+
+<div class="accountlogout">
+  <button class="btn btn-primary btn-sm">
+    <a href="{% url 'logout' %}">logout</a>
+  </button>
+</div>
+
 {% for workout in request.user.completed_workouts.all %}
-<h1>{{workout.name}}</h1>
-{% endfor %}
+    <h1>{{workout.name}}</h1>
+    {% endfor %}
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="homenavbar">
+  <ul class="nav sticky-bottom bg-dark justify-content-center">
+   <li class="nav-item">
+     <a class="nav-link active" href="{% url 'home' %}">
+       <i class="fa-solid fa-house"></i>
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'template' %}">
+       <i class="fa-solid fa-dumbbell"></i>
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'nutrition' %}">
+       <i class="fa-solid fa-bowl-food"></i>
+     </a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="{% url 'account' %}">
+       <i class="fa-solid fa-gear"></i>
+     </a>
+   </li>
+ </ul> 
+</div>
+
+
+
+
 {% endblock content %}

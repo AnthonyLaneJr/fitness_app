@@ -3,14 +3,70 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-Home Page
-{% if request.user == user %}
+
+<nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-dumbbell"></i>
+        Fitness-App
+      </a>
+      <h6><i class="fa-solid fa-user"></i>{{ request.user }}</h6>
+    </div>
+  </nav>
+
+
+
+<h1 class="accounttitle">Update Account</h1>
+
+<div class="accountupdate">
+
+    {% if request.user == user %}
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <button class="btn btn-primary btn-sm">
+        Submit
+    </button>
+  
 </form>
-<p><a href="http://127.0.0.1:8000/register/change/{{user.pk}}/">Change Password</a></p>
 {% endif %}
-{{ user.username }}
+
+</div>
+
+
+
+<div class="changepassword">
+    <button class="btn btn-primary btn-sm">
+      <a href="{% url 'password_change' %}">Reset Password</a>
+    </button>
+</div>
+
+
+
+
+<div class="accountnavbar">
+    <ul class="nav sticky-bottom bg-dark justify-content-center">
+     <li class="nav-item">
+       <a class="nav-link active" href="{% url 'home' %}">
+         <i class="fa-solid fa-house"></i>
+       </a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'template' %}">
+         <i class="fa-solid fa-dumbbell"></i>
+       </a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'nutrition' %}">
+         <i class="fa-solid fa-bowl-food"></i>
+       </a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="{% url 'account' %}">
+         <i class="fa-solid fa-gear"></i>
+       </a>
+     </li>
+   </ul> 
+  </div>
+
 {% endblock content %}

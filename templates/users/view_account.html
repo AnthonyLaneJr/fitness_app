@@ -4,16 +4,83 @@
 
 {% block content %}
 View Account
-{% if request.user.is_authenticated %}
-    <p>User = {{ request.user }}</p>
-    <p>Pk = {{ request.user.pk }}</p>
-    <p>Height = {{ request.user.height }}</p>
-    <p>Weight = {{ request.user.weight }}</p>
-    <p>Age = {{ request.user.age_category }}</p>
-    <p>Goal = {{ request.user.get_goal_display }}</p>
-    <p>Frequency = {{ request.user.get_exercise_frequency_display }}</p>
-    <p>Template = {{ request.user.template_id }}</p>
-    <p>Template_id = {{ request.user.template_id.id }}</p>
-    <a href="update/{{request.user.pk}}/">Update account</a>
-{% endif %}
+<nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-dumbbell"></i>
+        Fitness-App
+      </a>
+      <h6><i class="fa-solid fa-user"></i>{{ request.user }}</h6>
+    </div>
+  </nav>
+
+  <h1 class="account">Account</h1>
+<div class="useraccountinfo">
+
+    {% if request.user.is_authenticated %}
+      <i class="fa-solid fa-user"></i>{{ request.user }}</p>
+      
+      <p><i class="fa-solid fa-ruler"></i> {{ request.user.height }}</p>
+      <p><i class="fa-solid fa-weight-scale"></i>{{ request.user.weight }}</p>
+      <p>Age: {{ request.user.age_category }}</p>
+      <p>Pk: {{ request.user.pk }}</p>
+  
+      {% endif %}
+  
+  </div>
+  <div class="accountinfo">
+    {% if request.user.is_authenticated %}
+    <p>Goal: {{ request.user.get_goal_display }}</p>
+    <p>Frequency: {{ request.user.get_exercise_frequency_display }}</p>
+    <p>Template: {{ request.user.template_id }}</p>
+    <p>Template ID: {{ request.user.template_id.id }}</p>
+    
+  
+    {% endif %}
+  </div>
+
+  <div class="updateaccount">
+    <button class="btn btn-primary btn-sm">
+        <a href="update/{{request.user.pk}}/">Update account</a>
+    </button>
+  </div>
+
+   <div class="resetworkout">
+    <form method="POST" action="{% url 'update_workouts' %}">
+        {% csrf_token %}
+        <button class="btn btn-primary btn-sm" type="submit">Reset Progress</button>
+    </form>
+   </div>
+    
+
+
+
+
+
+    <div class="viewaccountnavbar">
+        <ul class="nav sticky-bottom bg-dark justify-content-center">
+         <li class="nav-item">
+           <a class="nav-link active" href="{% url 'home' %}">
+             <i class="fa-solid fa-house"></i>
+           </a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'template' %}">
+             <i class="fa-solid fa-dumbbell"></i>
+           </a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'nutrition' %}">
+             <i class="fa-solid fa-bowl-food"></i>
+           </a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'account' %}">
+             <i class="fa-solid fa-gear"></i>
+           </a>
+         </li>
+       </ul> 
+      </div>
+      
+
 {% endblock content %}
