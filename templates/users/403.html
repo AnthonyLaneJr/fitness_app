@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Help Page{% endblock title %}
+
+{% block content %}
+<h1>OOPS!</h1>
+<p>Looks like you fell into a well, click the link below to escape!</p>
+<a href='{% url "home" %}'>Safety</a>
+{% endblock content %}

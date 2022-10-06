@@ -17,7 +17,7 @@ View Account
     <a href="update/{{request.user.pk}}/">Update account</a>
     <form method="POST" action="{% url 'update_workouts' %}">
         {% csrf_token %}
-        <button type="submit">Reset Workout Progress</button>
+        <button type="submit" onclick="return confirm('Are you sure?')">Reset Workout Progress</button>
     </form>
 {% endif %}
 {% endblock content %}
