@@ -22,11 +22,12 @@
   
   <div class="weeks">  
     {% for week in template.weeks.all %}
-    <button class="btn btn-primary btn-sm">
       <a href="{{week.get_absolute_url}}">
-      {{week.get_order_display}}
+        <button class="btn btn-primary btn-sm">
+        {{week.get_order_display}}
+        </button>  
       </a>
-    </button>  
+    
     {% endfor %}
   </div>
     

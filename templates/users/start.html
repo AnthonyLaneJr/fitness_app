@@ -14,13 +14,10 @@
 
 <div class="start">
   <h1 class="welcometitle">Welcome Back!</h1>
-
+  <div class="homebuttons">
 
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
-
-
-    <div class="homebuttons">
       <table class="username">
         <tr >
           <td >{{ form.username.label_tag }}</td>
@@ -35,29 +32,17 @@
       </table>
 
       <button class="btn btn-primary btn-sm">Login</button>
-
-      <button class="btn btn-primary btn-sm"> <a href="{% url 'register' %}">New User</a></button>
-
-      <button class="btn btn-primary btn-sm">
-        <a href="{% url 'password_reset' %}">Reset Password </a>
-      </button>
-    </div>
-
-
-    <!--  <input type="text" class="start" placeholder="Username:">
-
-                  <input type="text" placeholder="Password:" class="start">  -->
   </form>
+
+      <a href="{% url 'register' %}"><button class="btn btn-primary btn-sm" value="none">New User</button></a>
+
+      
+      <a href="{% url 'password_reset' %}"><button class="btn btn-primary btn-sm" value="none">Reset Password</button></a>
+
+    
+    </div>
+  
 </div>
 
 {% endblock content %}
 
-<!-- 
-<h1 class="login">Log In</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
-<Small class="login white-text">Forgot your Password? <a class="white-text" href="{% url 'password_reset_form' %}">Click here</a> to reset it.</Small>
--->

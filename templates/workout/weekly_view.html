@@ -17,9 +17,11 @@
 <div class="weeklyworkouts">
   {{week.get_order_display}} days:
   {% for day in week.exercise_list.all %}
-  <button class="btn btn-primary btn-sm">
-    <a href="{{ day.get_absolute_url }}">{{day.display_name}}</a>
-  </button>
+  <a href="{{ day.get_absolute_url }}">
+    <button class="btn btn-primary btn-sm">
+    {{day.display_name}}
+    </button>
+  </a>
   {% endfor %}
 </div>
 
