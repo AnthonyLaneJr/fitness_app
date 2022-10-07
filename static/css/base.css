@@ -4,23 +4,23 @@ dark blue (back of buttons) #023047
 gray (unused really) #707070
 light black backing - #8ECAE6
 medium lblue (overall backgroun) #219EBC   */
-
 *{
-    max-width: 428px;
-    max-height: 926px;
-    
+  max-width: 428px;
+  max-height: 926px;
+  
 }
+
 div.base{
    
-        background-color: black;
-        color: white;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-    
-    
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+
+
 }
 
 /* Start Page */
@@ -112,10 +112,7 @@ div.base{
 /* password reset page */
 
 
-/*Navbar*/
-.navbar .navbar-brand {
-    color: white;
-}
+
 
 /* footer */
 
@@ -127,57 +124,73 @@ a.nav-link:hover {
 }
 
 /*Daily*/
-
-.exercisetitle{
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top:20px;
+button.accordion-button:hover{
+  background-color: white;
+  color: black;
 }
-.exercise{
-    
-    background-color: #212529;
-    border: none;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 25px;
+
+
+
+.daily .accordion-item{
+  background-color: #212529;
+  color: white;
+}
+.daily .accordion{
+  
+  background-color: white;
+  border: none;
+  margin-top: 80px;
+  border-radius: 25px;
+  
+}
+.accordion{
+  margin: 30px;
 }
 .workoutcomplete{
-    text-align: center;
+  text-align: center;
 }
 .dailyresetbtn button.btn{
-    margin: 35%;
-    border: none;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    width: 30%;
-    background-color: #35c8a8;
-    border-radius: 25px;
+  margin: 35%;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 30%;
+  background-color: #35c8a8;
+  border-radius: 25px;
 }
 
 .dailyresetbtn button.btn:hover{
-    background-color: white;
-    color: black;
-  }
+  background-color: white;
+  color: black;
+}
 
 .dailycompletebtn button.btn{  
-    margin: 35%;
-    border: none;
-    margin-bottom: 0px;
-    margin-top: 40px;
-    width: 30%;
-    background-color: #35c8a8;
-    border-radius: 25px;
-    
+  margin: 35%;
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  width: 30%;
+  background-color: #35c8a8;
+  border-radius: 25px;
+  
 }
 
 .dailycompletebtn button.btn:hover{
-    background-color: white;
-    color: black;
-  }
+  background-color: white;
+  color: black;
+}
+
+
+
+.exercisetitle{
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top:20px;
+}
 
 .dailynavbar{
-    margin-top: 33px;
-    
+  margin-top: 365px;
+  
 }
 
 /*Template*/
@@ -252,7 +265,7 @@ a.nav-link:hover {
 }
 
 .homenavbar{
-  margin-top: 95px;
+  margin-top: 175px;
 }
 
 
@@ -300,11 +313,11 @@ a.nav-link:hover {
 }
 
 .weeklyworkouts button.btn{
-    margin: 35%;
+    margin: 20%;
     border: none;
     margin-bottom: 0px;
     margin-top: 40px;
-    width: 40%;
+    width: 60%;
     background-color: #35c8a8;
     border-radius: 25px;
 }
@@ -326,7 +339,7 @@ a.nav-link:hover {
 
 
 .weeklynavbar{
-    margin-top: 440px;
+    margin-top: 155px;
 }
 
 
@@ -418,7 +431,7 @@ h1.account{
   
 
 .viewaccountnavbar{
-    margin-top: 60px;
+    margin-top: 140px;
 }
 
 
@@ -610,3 +623,48 @@ h1.account{
 
 
 
+/*Navbar*/
+.navbar .navbar-brand {
+  color: white;
+
+  
+}
+
+.navbar a.navbar-brand {
+  color: white;
+  text-decoration: none !important;
+}
+
+/*nutrition*/
+.nutritiontitle{
+  text-align: center;
+  margin-top:20px;
+  margin-bottom: 30px;
+}
+.nutritioninfo{
+  background-color: #212529;
+  border: none;
+  padding: 30px;
+  margin: 50px;
+  border-radius: 25px;
+  margin-top: 60px;
+  
+}
+.nutritioninfo button.btn{
+display: block;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 50%;
+  background-color: #35c8a8;
+  border-radius: 25px;
+  text-align: center;
+}
+.nutritioninfo button.btn:hover{
+  background-color: white;
+  color: black;
+}
+
+.nutritionnavbar{
+
+}

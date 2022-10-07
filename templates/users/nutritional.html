@@ -3,16 +3,24 @@
 {% block title %}Nutritional Calculator{% endblock title %}
 
 {% block content %}
-<div class="page">
-    <div class="navigation_bar">
-        <i class="fa-solid fa-arrow-left fa-2xl"></i>
-        <h1 class="register">Caloric Intake Estimator
+
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-dumbbell"></i>
+      Fitness-App
+    </a>
+    <h6>{{ request.user }}</h6>
+  </div>
+</nav>
+
+<div class="nutrition">
+  
+        <h1 class="nutritiontitle">Caloric Intake Estimator
         </h1>
-    </div>
-    <div class="logo_return">
-        <img src="#" alt="Logo" class="register">
-    </div>
-        <h3 class="register">{{ user.name }}'s Information</h3>
+    <div class="nutritioninfo">
+
+     
         <div class="register inputs">
             <input type="text" placeholder="Age">
             <input type="text" placeholder="Height">
@@ -20,21 +28,26 @@
             <input type="drop" placeholder="Exercise Amounts during the Week">
             <input type="text" placeholder="Goal">
         </div>
-        <h3 class="nutrition akward-nut">Please confirm the above information is correct</h3>
-        <button class="submit" aria-placeholder="Create Account"> Calculate   <i class="fa-solid fa-right-to-bracket"></i></button>
+        <h5 class="nutrition akward-nut">Please confirm the above information is correct</h3>
+        <button class="btn btn-primary btn-sm">calculate</button>
         <h3 class="nutrition">Recommendations</h3>
         <div class="total grid-container">
             <div class="grid-item"><h5>Protein:</h5></div>
             <div class="grid-item"># Grams</div>
+            <br>
             <div class="grid-item"><h5>Carbohydrates:</h5></div>
             <div class="grid-item"># Grams</div>
+            <br>
             <div class="grid-item"><h5>Fat:</h5></div>
             <div class="grid-item"># Grams</div>
+            <br>
             <div class="grid-item"><h5>Total Calories:</h5></div>
             <div class="grid-item"># Cal</div>
         </div>
+    </div>
+        
 </div>
-<div class="customnavbar">
+<div class="nutritionnavbar">
     <ul class="nav sticky-bottom bg-dark justify-content-center">
      <li class="nav-item">
  

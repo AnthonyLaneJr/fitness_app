@@ -1,111 +1,192 @@
 {% extends 'base.html' %}
-
-{% block title %}Daily View{% endblock title %}
-
-{% block content %}
+ {% block title %}Daily View
+ {% endblock title %} 
+ {%block content %}
 <nav class="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <i class="fa-solid fa-dumbbell"></i>
-        Fitness-App
-      </a>
-      <h6>{{ request.user }}</h6>
-    </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-dumbbell"></i>
+      Fitness-App
+    </a>
+    <h6>{{ request.user }}</h6>
+  </div>
 </nav>
 
-
 <div class="daily">
+  <h1 class="exercisetitle">{{exercise}}</h1>
+
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+
+
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne"
+          aria-expanded="false"
+          aria-controls="flush-collapseOne"
+        >
+          {{ exercise.exercise_1 }}
+        </button>
+      </h2>
+      <div
+        id="flush-collapseOne"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">{{ exercise.description_1 }}</div>
+      </div>
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            {{ exercise.exercise_2 }}
+          </button>
+        </h2>
+        <div
+          id="flush-collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">{{ exercise.description_2 }}</div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              {{ exercise.exercise_3 }}
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingThree"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">{{ exercise.description_3 }}</div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseFour"
+                aria-expanded="false"
+                aria-controls="flush-collapseFour"
+              >
+                {{ exercise.exercise_4 }}
+              </button>
+            </h2>
+            <div
+              id="flush-collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingFour"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">{{ exercise.description_4 }}</div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFive">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFive"
+                >
+                  {{ exercise.exercise_5 }}
+                </button>
+              </h2>
+              <div
+                id="flush-collapseFive"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingFive"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">{{ exercise.description_5 }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+  </div>
+            {% if exercise.name in workouts %}
+            <h5 class="workoutcomplete">Workout Already Completed</h5>
+
+            <div class="dailyresetbtn">
+              <form
+                method="POST"
+                action="{% url 'remove' slug=exercise.slug %}"
+              >
+                {% csrf_token %}
+                <button class="btn btn-primary btn-sm">Reset</button>
+              </form>
+            </div>
+
+            {% else %}
+
+            <div class="dailycompletebtn">
+              <form
+                method="POST"
+                action="{% url 'update' slug=exercise.slug %}"
+              >
+                {% csrf_token %}
+                <button class="btn btn-primary btn-sm">Complete</button>
+              </form>
+            </div>
+
+            {% endif %}
+          </div>
+
+          <div class="dailynavbar">
+            <ul class="nav sticky-bottom bg-dark justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'home' %}">
+                  <i class="fa-solid fa-house"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'template' %}">
+                  <i class="fa-solid fa-dumbbell"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'nutrition' %}">
+                  <i class="fa-solid fa-bowl-food"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account' %}">
+                  <i class="fa-solid fa-gear"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {% endblock content %}
+        
+      
     
-    <h1 class="exercisetitle">{{exercise}}</h1>
-    
-    <div class="exercise">
-        {{ exercise.exercise_1 }}
-        <br>
-        <br>
-        {{ exercise.description_1 }}
-    </div>
-
-    <div class="exercise">
-        {{ exercise.exercise_2 }}
-        <br>
-        <br>
-        {{ exercise.description_2 }}
-    </div>
-
-    
-    <div class="exercise">
-        {{ exercise.exercise_3 }}
-        <br>
-        <br>
-        {{ exercise.description_3 }}
-    </div>
-
-    <div class="exercise">
-        {{ exercise.exercise_4 }}
-        <br>
-        <br>
-        {{ exercise.description_4 }}
-    </div>
-
-    <div class="exercise">
-        {{ exercise.exercise_5 }}
-        <br>
-        <br>
-        {{ exercise.description_5 }}
-    </div>
-{% if exercise.name in workouts %}
-<h5 class="workoutcomplete">Workout Already Completed</h5>
-
-<div class="dailyresetbtn">
-    <form method="POST" action="{% url 'remove' slug=exercise.slug %}">
-    {% csrf_token %}
-    <button class="btn btn-primary btn-sm">Reset</button>
-</form>
-</div>
-
-
-
-{% else %}
-
-<div class="dailycompletebtn">
-   <form method="POST" action="{% url 'update' slug=exercise.slug %}">
-        {% csrf_token %}
-        <button class="btn btn-primary btn-sm">Complete</button>
-    </form>  
-</div>
-
-
-
-</div>
-
-<div class="dailynavbar">
-   <ul class="nav sticky-bottom bg-dark justify-content-center">
-    <li class="nav-item">
-
-      <a class="nav-link active" href="{% url 'home' %}">
-        <i class="fa-solid fa-house"></i>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'template' %}">
-        <i class="fa-solid fa-dumbbell"></i>
   
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'nutrition' %}">
-        <i class="fa-solid fa-bowl-food"></i>
-  
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'account' %}">
-        <i class="fa-solid fa-gear"></i>
-  
-      </a>
-    </li>
-  </ul> 
-</div>
 
-{% endif %}
-{% endblock content %}

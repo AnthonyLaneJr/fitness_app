@@ -38,15 +38,18 @@ View Account
   </div>
 
   <div class="updateaccount">
-    <button class="btn btn-primary btn-sm">
-        <a href="update/{{request.user.pk}}/">Update account</a>
+    
+        <a href="update/{{request.user.pk}}/">
+          <button class="btn btn-primary btn-sm">
+            Update account
     </button>
+  </a>
   </div>
 
    <div class="resetworkout">
     <form method="POST" action="{% url 'update_workouts' %}">
         {% csrf_token %}
-        <button class="btn btn-primary btn-sm" type="submit" onclick="return confirm('Are you sure?')">Reset Workout Progress</button>
+        <button class="btn btn-primary btn-sm" type="submit" onclick="return confirm('Are you sure?')">Reset Progress</button>
     </form>
    </div>
     
